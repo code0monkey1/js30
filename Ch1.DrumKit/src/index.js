@@ -15,13 +15,15 @@ function playSound(e) {
   console.log(e.key);
   const audio = document.querySelector(`audio[data-key="${e.key}"]`);
   const key = document.querySelector(`div[data-key="${e.key}"]`);
-  console.log("key is", key);
   if (!audio) return;
+
   key.classList.add("playing");
+
   setTimeout(function () {
     key.classList.remove("playing");
     // Remove glow class after a delay
   }, 500); //
+
   audio.currentTime = 0;
   audio.play();
 }
