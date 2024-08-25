@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        gap: 20px;
+      "
+    >
+      <div class="key" data-key="a" tabindex="0">a</div>
+      <div class="key" data-key="s">s</div>
+      <div class="key" data-key="d">d</div>
+    </div>
+    <div>
+      <audio data-key="a" src="./sounds/boom.wav"></audio>
+      <audio data-key="s" src="./sounds/clap.wav"></audio>
+      <audio data-key="d" src="./sounds/hihat.wav"></audio>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>

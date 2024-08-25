@@ -1,0 +1,29 @@
+h1 {
+  background-color: brown;
+}
+
+html {
+  background: url("./background.jpg") bottom center;
+  background-size: cover;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.key {
+  color: azure;
+  font-size: 2rem;
+  border: 0.2rem solid yellow;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.playing {
+  transform: scale(1.2);
+  box-shadow: 0 0 10px yellow;
+}
