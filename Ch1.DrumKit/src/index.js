@@ -22,5 +22,5 @@ function playSound(e) {
 
 function removeTransition(e) {
   if (e.propertyName !== "transform") return;
-  e.target.classList.remove("playing");
+  this.classList.remove("playing");
 }
