@@ -17,13 +17,20 @@ html {
 .key {
   color: azure;
   font-size: 2rem;
-  border: 0.2rem solid yellow;
+  border: 0.2rem solid black;
   padding: 0.5rem;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: all 0.5s;
+  text-align: center;
 }
 
 .playing {
-  transform: scale(1.2);
+  transform: scale(1.1);
   box-shadow: 0 0 10px yellow;
+  border: 0.2rem dotted yellow;
+}
+.sound-description {
+  color: yellow;
+  font-size: 1rem;
+  margin-top: 1rem;
 }

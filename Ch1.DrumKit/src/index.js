@@ -1,29 +1,26 @@
-window.addEventListener("keydown", playSound);
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("This loads");
-  document.querySelectorAll(".key").forEach((key) => {
-    console.log(key.dataset);
+document.addEventListener("keypress", playSound);
 
-    key.addEventListener("keypress", (event) => {
-      if (key.dataset.key === "a") playSound(event);
-      if (key.dataset.key === "s") playSound(event);
-    });
-  });
-});
+const keys = document.querySelectorAll(".key");
+// best to use transition end event , to ensure the transition speed is consistent , better that creating manual way using setTimeout to remove class after transition
+
+keys.forEach((key) => key.addEventListener("transitionend", removeTransition));
 
 function playSound(e) {
-  console.log(e.key);
+  //get audio from
   const audio = document.querySelector(`audio[data-key="${e.key}"]`);
-  const key = document.querySelector(`div[data-key="${e.key}"]`);
+  //animate key
+  const key = document.querySelector(`.key[data-key="${e.key}"]`);
   if (!audio) return;
 
   key.classList.add("playing");
 
-  setTimeout(function () {
-    key.classList.remove("playing");
-    // Remove glow class after a delay
-  }, 500); //
-
+  // to rewind it to the start of the sound , so that multiple clicks could work
   audio.currentTime = 0;
+
   audio.play();
+}
+
+function removeTransition(e) {
+  if (e.propertyName !== "transform") return;
+  e.target.classList.remove("playing");
 }
