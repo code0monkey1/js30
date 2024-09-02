@@ -243,20 +243,20 @@
 
       function checkSlide() {
         sliderImages.forEach((sliderImage) => {
-          const scrollAt = window.scrollY + window.innerHeight;
+          const screenBottom = window.innerHeight + window.scrollY;
 
-          //half way through the image
-          const iShown =
-            scrollAt > sliderImage.offsetTop + sliderImage.height / 2;
+          // show picture when half in the window frame
+          const hasTopHalfImage =
+            sliderImage.offsetTop + sliderImage.height / 2 < screenBottom;
 
-          const isHidden =
-            sliderImage.offsetTop + sliderImage.height / 2 < window.scrollY;
+          const hasBottomHalfImage =
+            window.scrollY > sliderImage.offsetTop + sliderImage.height / 2;
 
-          if (iShown && !isHidden) {
+          if (hasTopHalfImage) {
             sliderImage.classList.add("active");
           }
 
-          if (isHidden && sliderImage.classList.contains("active")) {
+          if (hasBottomHalfImage && sliderImage.classList.contains("active")) {
             sliderImage.classList.remove("active");
           }
         });
