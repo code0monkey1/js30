@@ -249,14 +249,12 @@
           const hasTopHalfImage =
             sliderImage.offsetTop + sliderImage.height / 2 < screenBottom;
 
-          const hasBottomHalfImage =
+          const isScrolledPassed =
             window.scrollY > sliderImage.offsetTop + sliderImage.height / 2;
 
-          if (hasTopHalfImage) {
+          if (hasTopHalfImage && !isScrolledPassed) {
             sliderImage.classList.add("active");
-          }
-
-          if (hasBottomHalfImage && sliderImage.classList.contains("active")) {
+          } else {
             sliderImage.classList.remove("active");
           }
         });
