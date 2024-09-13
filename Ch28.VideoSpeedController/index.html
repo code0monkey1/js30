@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Video Speed Scrubber</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <video
+        class="flex"
+        width="765"
+        height="430"
+        src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
+        loop
+        controls
+      ></video>
+      <div class="speed">
+        <div class="speed-bar">1×</div>
+      </div>
+    </div>
+
+    <script>
+      const speed = document.querySelector(".speed");
+      const bar = speed.querySelector(".speed-bar");
+      const video = document.querySelector(".flex");
+
+      speed.addEventListener("mousemove", function (e) {
+        const positionY = e.pageY - this.offsetTop;
+
+        //const total height of speed bar :
+        const percentage = positionY / this.offsetHeight;
+
+        const height = Math.round(percentage * 100) + "%";
+
+        const min = 0.5;
+        const max = 4;
+
+        const playbackRate = percentage * (max - min) + min;
+
+        // now make the speed bar move as per percentage
+        bar.style.height = height;
+        // make the speed text inside the speed bar move as per percentage
+        bar.textContent = Math.ceil(playbackRate.toFixed(2)) + "x";
+
+        video.playbackRate = playbackRate;
+        console.log(Math.ceil(playbackRate));
+      });
+    </script>
+  </body>
+</html>
